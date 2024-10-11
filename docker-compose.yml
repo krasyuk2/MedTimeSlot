@@ -1,0 +1,111 @@
+﻿version: '3.9'
+
+volumes:
+  postgres-data:
+  keycloak-postgres-data:
+
+networks:
+  asp_net:
+    driver: bridge
+  keycloak_net:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - asp_net
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: medTime
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: pg_isready -U postgres -d medTime
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  
+  
+  keycloak-postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    volumes:
+      - keycloak-postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    networks:
+      - keycloak_net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U keycloak" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    command: [ "start-dev", "--db", "postgres", "--http-enabled=true", "--import-realm" ]
+    environment:
+      KC_DB_URL: jdbc:postgresql://keycloak-postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+      KC_DB_SCHEMA: public
+      KC_FEATURES: preview
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KeycloakUrl: "http://keycloak:8080/"
+    ports:
+      - "8080:8080"
+    depends_on:
+      keycloak-postgres:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://0.0.0.0:8080/realms/master" ]
+      start_period: 10s
+      interval: 30s
+      retries: 3
+      timeout: 5s
+    networks:
+      - keycloak_net
+    volumes:
+      - type: bind
+        source: ./import/realm-export.json
+        target: /opt/keycloak/data/import/realm-export.json
+        read_only: true
+  
+  
+  webapi:
+    build:
+      context: ./
+      dockerfile: ./MedTimeSlot.Api/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:5080
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Username=postgres;Password=password;Port=5432;Database=medTime
+      - Keycloak__Authority=http://keycloak:8080/realms/TimeSlotRealm
+      - Keycloak__ClientId=timeSlotClient
+      - UseSwagger=true
+    ports:
+      - "5080:5080"
+    depends_on:
+      - postgres
+      - keycloak
+    networks:
+      - keycloak_net
+      - asp_net
+      
+  frontend:
+    build:
+      context: ./MedTimeSlot.UI/UI 
+      dockerfile: Dockerfile 
+    ports:
+      - "4200:80" 
+    networks:
+      - asp_net 
+    depends_on:
+      - webapi 

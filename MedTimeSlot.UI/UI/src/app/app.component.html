@@ -1,0 +1,11 @@
+<keycloak-app></keycloak-app>
+
+
+<div *ngIf="isDoctor">
+  <app-schedule></app-schedule>
+</div>
+
+<div *ngIf="!isDoctor">
+  <app-doctor></app-doctor>
+</div>
+

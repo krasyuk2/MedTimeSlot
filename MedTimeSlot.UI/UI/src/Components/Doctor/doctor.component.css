@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.doctor-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-card {
+    margin-bottom: 10px;
+}
+
+.doctor-button, .time-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: left;
+}
+
+.doctor-button:hover, .time-button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    font-size: 18px;
+    color: #777;
+}
+
+.date-selection, .time-selection, .appointment-list {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.time-list {
+    margin-top: 10px;
+}
+
+.time-item {
+    margin-bottom: 10px;
+}
+
+.appointment-item {
+    padding: 10px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}

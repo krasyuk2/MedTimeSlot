@@ -1,0 +1,54 @@
+<div class="container">
+  <div *ngIf="doctors.length > 0">
+    <h1>Выберите врача</h1>
+    <button class="btn" (click)="getAppointment()">Получить мои записи</button>
+    <br><br>
+
+    <div class="doctor-list">
+      <div *ngFor="let doctor of doctors" class="doctor-card">
+        <button class="doctor-button" (click)="getSchedules(doctor.id)">
+          <h3>{{ doctor.firstName }} {{ doctor.lastName }}</h3>
+          <p>Специальность: {{ doctor.speciality }}</p>
+          <p>Возраст: {{ doctor.age }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="doctors.length === 0" class="loading">Loading...</div>
+
+  <form *ngIf="schedules.length > 0" class="date-selection">
+    <h2>Выберите дату</h2>
+    <div class="time-list">
+      <div *ngFor="let cellTime of schedules" class="time-item">
+        <button class="time-button" (click)="getCellTimes(cellTime.startTime)">
+          {{cellTime.startTime}}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <form *ngIf="cellTimes.length > 0 && !selectedCellTime" class="time-selection">
+    <h2>Выберите время</h2>
+    <div class="time-list">
+      <div *ngFor="let cellTime of cellTimes" class="time-item">
+        <button class="time-button" (click)="createAppointment(cellTime.time)">
+          {{cellTime.time}}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Отображаем сообщение о том, что запись создана, если есть выбранное время -->
+  <div *ngIf="selectedCellTime" class="appointment-confirmation">
+    <h3>Запись на {{ selectedCellTime }} успешно создана!</h3>
+    <button class="btn" (click)="selectedCellTime = null">Назад</button>
+  </div>
+
+  <form *ngIf="appointment.length > 0" class="appointment-list">
+    <h2>Ваши записи</h2>
+    <div class="appointment-item" *ngFor="let cellTime of appointment">
+      <p>{{cellTime.time}}</p>
+    </div>
+  </form>
+</div>

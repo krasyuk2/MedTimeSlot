@@ -1,0 +1,38 @@
+<!-- src/app/appointment-form/appointment-form.component.html -->
+
+<div class="container">
+  <h1>Создание базы на 3 недели</h1>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="appointment-form">
+    <div class="form-group">
+      <label for="DayOfWeek">День недели:</label>
+      <input id="DayOfWeek" formControlName="DayOfWeek" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="StartTime">Время начала:</label>
+      <input id="StartTime" formControlName="StartTime" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="EndTime">Время окончания:</label>
+      <input id="EndTime" formControlName="EndTime" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="AppointmentDuration">Продолжительность записи (формат HH:mm:ss):</label>
+      <input id="AppointmentDuration" formControlName="AppointmentDuration" type="text" placeholder="00:15:00" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="StartLaunchTime">Время начала обеда:</label>
+      <input id="StartLaunchTime" formControlName="StartLaunchTime" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="EndLaunchTime">Время окончания обеда:</label>
+      <input id="EndLaunchTime" formControlName="EndLaunchTime" type="datetime-local" class="form-control" />
+    </div>
+
+    <button type="submit" [disabled]="appointmentForm.invalid" class="submit-button">Отправить</button>
+  </form>
+</div>

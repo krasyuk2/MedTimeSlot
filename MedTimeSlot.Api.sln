@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.Api", "MedTimeSlot.Api\MedTimeSlot.Api.csproj", "{9A7FC863-2B85-4A32-B503-7C41D9BB77B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.Core", "MedTimeSlot.Core\MedTimeSlot.Core.csproj", "{DAE30EA9-4215-4E5C-8F20-61D054DFFCA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.Application", "MedTimeSlot.Application\MedTimeSlot.Application.csproj", "{93842A9C-0904-4C2A-8FC6-EC3F0D73C016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.DataAccess", "MedTimeSlot.DataAccess\MedTimeSlot.DataAccess.csproj", "{7B5798DD-44FF-4913-8B15-7204241ACBC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFB9CB90-E2AE-48F3-898D-FC30E045BBD7}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.Testing", "MedTimeSlot.Testing\MedTimeSlot.Testing.csproj", "{516A67F3-7E6A-4C9E-99D8-CE8E3A49A01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedTimeSlot.UI", "MedTimeSlot.UI\MedTimeSlot.UI.csproj", "{22EE47E3-5480-4012-8B87-7EAC81FC3EFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A7FC863-2B85-4A32-B503-7C41D9BB77B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7FC863-2B85-4A32-B503-7C41D9BB77B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7FC863-2B85-4A32-B503-7C41D9BB77B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7FC863-2B85-4A32-B503-7C41D9BB77B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE30EA9-4215-4E5C-8F20-61D054DFFCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE30EA9-4215-4E5C-8F20-61D054DFFCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE30EA9-4215-4E5C-8F20-61D054DFFCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE30EA9-4215-4E5C-8F20-61D054DFFCA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93842A9C-0904-4C2A-8FC6-EC3F0D73C016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93842A9C-0904-4C2A-8FC6-EC3F0D73C016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93842A9C-0904-4C2A-8FC6-EC3F0D73C016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93842A9C-0904-4C2A-8FC6-EC3F0D73C016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5798DD-44FF-4913-8B15-7204241ACBC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5798DD-44FF-4913-8B15-7204241ACBC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5798DD-44FF-4913-8B15-7204241ACBC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5798DD-44FF-4913-8B15-7204241ACBC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{516A67F3-7E6A-4C9E-99D8-CE8E3A49A01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{516A67F3-7E6A-4C9E-99D8-CE8E3A49A01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{516A67F3-7E6A-4C9E-99D8-CE8E3A49A01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{516A67F3-7E6A-4C9E-99D8-CE8E3A49A01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22EE47E3-5480-4012-8B87-7EAC81FC3EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EE47E3-5480-4012-8B87-7EAC81FC3EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EE47E3-5480-4012-8B87-7EAC81FC3EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EE47E3-5480-4012-8B87-7EAC81FC3EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
